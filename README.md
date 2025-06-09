@@ -27,7 +27,7 @@ curl --location --request POST 'https://api.yosmart.com/open/yolink/v2/api' \
 
 From the results, note the *deviceId*, *name*, and *token* for each THSensor you want to retrieve data for.
 
-### Test data 
+### Test data retrieval 
 ```bash
 curl --location --request POST 'https://api.yosmart.com/open/yolink/v2/api' \
 --header 'Content-Type: application/json' \
