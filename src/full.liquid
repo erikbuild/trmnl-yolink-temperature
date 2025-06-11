@@ -1,0 +1,19 @@
+<div class="layout layout--col gap--space-between">
+  <div class="grid grid--cols-3 gap--xxlarge">
+    {% for sensor in sensors %}
+      <div class="item">
+        <div class="meta"></div>
+        <div class="content">
+          <span class="value value--large value--tnums">{{ sensor.temperature }} <span class="text--gray-3">&deg;F</span></span>
+          <span class="label">{{ sensor.name }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="title_bar">
+  <img class="image" src="https://usetrmnl.com/images/plugins/trmnl--render.svg">
+  <span class="title">{{ trmnl.plugin_settings.instance_name }}</span>
+  <span class="instance">erikbuild home</span>
+</div>

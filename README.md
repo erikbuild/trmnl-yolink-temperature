@@ -1,39 +1,41 @@
 # YoLink Temperature Sensor Plugin for TRMNL
 
+This [TRMNL](https://usetrmnl.com/) plugin displays a grid of all of your temperature/humidity sensors from a YoLink account.  
+
+NOTE: It requires hosting an intermediary function on something like Cloudflare Worker, Netlify Function, or AWS Lambda to proxy the API requests.
+
+![Preview of TRMNL dashboard](preview.png)
+
 ## Prerequisites
-### Retrieve your API Access Token
+
+### Get YoLink UserID / Secrets
 Generate a User Access Credential in the YoLink app if you haven't already.
 1. Open YoLink App
 1. Click the hamburger icon in the top left.
 1. Click Settings > Account > Advanced Settings > User Access Credentials
 1. Create a new credential if you don't already have one.  Otherwise, copy the *UIAD* and *Secret Key*.
 
-In a terminal:
-```bash
-curl -X POST -d "grant_type=client_credentials&client_id={UAID}&client_secret={SECRETKEY}" https://api.yosmart.com/open/yolink/token`
-```
+### Create Cloudflare Worker
+1. Create (or sign in to) a CloudFlare personal (free) account.
+1. Navigate to *Computer (Workers) > Workers & Pages*.
+1. Click on *Create* and then *Hello World > Get Started*.
+1. Name the worker and Click *Deploy*.  Note the deploy URL.
+1. Click *Edit Code* and replace the contents of `worker.js` in CloudFlare with the contents of `cloudflare\worker.js` from this repository.
+1. Click *Deploy* to deploy the worker.
+1. Click back to the worker overview page and Click *Settings*.
+1. Click *Variables & Secrets*.
+    1. Add a Secret named `YOLINK_CLIENT_ID` and set the value to the UIAD from your YoLink account.
+    1. Add a Secret named `YOLINK_CLIENT_SECRET` and set the value to the Secret Key from your YoLink account.
+1. Visit your deploy URL; you should see a JSON result with your temperature values and devices.
 
-`{"access_token":"ABCDEFGH123456789","token_type":"bearer", {...}`
+### Import the Plugin into TRMNL Dashboard
+todo.
 
-Save your *access_token*; you'll need this for plugin to work.
+## Local Development
 
-### Retrieve the deviceId and token for the Temperature/Humidity Sensor
-```bash
-curl --location --request POST 'https://api.yosmart.com/open/yolink/v2/api' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer {ACCESSTOKEN}' \
---data-raw '{"method":"Home.getDeviceList","time":1734595441905}'
-```
+Either the `trmnl_preview` gem or Docker must be installed.
 
-From the results, note the *deviceId*, *name*, and *token* for each THSensor you want to retrieve data for.
-
-### Test data retrieval 
-```bash
-curl --location --request POST 'https://api.yosmart.com/open/yolink/v2/api' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer ${access_token}' \
---data-raw '{"method":"THSensor.getState","targetDevice":"{DEVICEID}","token":"{DEVICETOKEN}"}'
-```
+Simply clone the repo, then run `bin/dev`.
 
 ## References
 http://doc.yosmart.com/docs/yolinkapi/THSensor
