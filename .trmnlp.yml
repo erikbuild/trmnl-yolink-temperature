@@ -9,6 +9,9 @@ watch:
 # values of custom fields (defined in src/settings.yml)
 custom_fields: {}
 
+custom_fields:
+  worker_url: "{{ env.CLOUDFLARE_WORKER_URL }}" # interpolate $CLOUDFLARE_WORKER_URL environment variable
+
 # override variables
 variables:
   trmnl: {}

@@ -4,8 +4,20 @@ no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: get
-polling_url: https://home-yolink.erik-dc9.workers.dev/
+polling_url: "{{ worker_url }}"
 polling_headers: ''
 id: 93606
+custom_fields:
+- keyname: worker_url
+  field_type: url
+  name: YoLink Proxy Worker URL
+  description: URL of Cloudflare (or other) worker.
+  placeholder: https://URLHERE.workers.dev
+  help_text: https://github.com/erikbuild/trmnl-yolink-temperature/tree/main?tab=readme-ov-file#create-cloudflare-worker
+- keyname: subtitle_string
+  field_type: string
+  name: Subtitle String
+  description: Subtitle displayed in bottom right.
+  placeholder: Home
 name: YoLink Temperature
 refresh_interval: 60
