@@ -29,7 +29,7 @@ Generate a User Access Credential in the YoLink app if you haven't already.
 1. Visit your deploy URL; you should see a JSON result with your temperature values and devices.
 
 ### Import the Plugin into TRMNL Dashboard
-1. Download the latest release zip.
+1. Download the [latest release](https://github.com/erikbuild/trmnl-yolink-temperature/releases) zip.
 1. Visit the [TMRNL Private Plugin Page](https://usetrmnl.com/plugin_settings?keyname=private_plugin).
 1. Click *Import new* and select the latest release zip.
 1. Set your Cloudflare Worker URL as well as the Subtitle Text.
