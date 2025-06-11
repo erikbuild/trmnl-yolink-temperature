@@ -4,7 +4,7 @@
 
 This [TRMNL](https://usetrmnl.com/) plugin displays a grid of all of your temperature/humidity sensors from a YoLink account.  
 
-NOTE: It requires hosting an intermediary function on something like Cloudflare Worker, Netlify Function, or AWS Lambda to proxy the API requests.
+NOTE: It requires hosting a simple json proxy api on something like Cloudflare Worker, Netlify Function, or AWS Lambda to proxy the API requests.
 
 ![Preview of TRMNL dashboard](preview.png)
 
