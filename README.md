@@ -1,5 +1,7 @@
 # YoLink Temperature Sensor Plugin for TRMNL
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 This [TRMNL](https://usetrmnl.com/) plugin displays a grid of all of your temperature/humidity sensors from a YoLink account.  
 
 NOTE: It requires hosting an intermediary function on something like Cloudflare Worker, Netlify Function, or AWS Lambda to proxy the API requests.
