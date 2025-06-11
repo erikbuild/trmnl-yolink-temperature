@@ -1,11 +1,11 @@
 <div class="layout layout--col gap--space-between">
-  <div class="grid grid--cols-3 gap--xxlarge">
+  <div class="grid grid--cols-2 gap">
     {% for sensor in sensors %}
       <div class="item">
         <div class="meta"></div>
         <div class="content">
-          <span class="value value--large value--tnums">{% render "temp", c: sensor.temperature %}</span>
-          <span class="label">{{ sensor.name }}</span>
+          <span class="value value--tnums">{% render "temp", c: sensor.temperature %}</span>
+          <span class="label label--small">{{ sensor.name }}</span>
         </div>
       </div>
     {% endfor %}

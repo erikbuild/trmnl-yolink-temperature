@@ -4,8 +4,7 @@
 //
 // Note: The YoLink/YoSmart User Access API rate limits pretty agressively.  One request a minute seems to be fine!
 //
-// Step 1: Create a new CloudFlare Worker, and copy in this code into the worker.js file.
-// Step 2: Create two (optionally three) ENV secrets in CloudFlare Worker:
+// Create two ENV secrets in CloudFlare Worker:
 //     YOLINK_CLIENT_ID  -- from your YoLink User Account Credentials
 //     YOLINK_CLIENT_SECRET -- from your YoLink User Account Credentials
 //     YOLINK_HOME_ID -- Optional: specific home ID if you have multiple homes
@@ -50,10 +49,10 @@ export default {
             deviceId: sensor.deviceId,
             name: sensor.name,
             humidity: state.data?.state?.humidity,
-            temperature: celsiusToFahrenehit(state.data?.state?.temperature),
-            tempLimitMin: celsiusToFahrenehit(state.data?.state?.tempLimit?.min),
-            tempLimitMax: celsiusToFahrenehit(state.data?.state?.tempLimit?.max), 
-            unit: 'F',
+            temperature: state.data?.state?.temperature,
+            tempLimitMin: state.data?.state?.tempLimit?.min,
+            tempLimitMax: state.data?.state?.tempLimit?.max, 
+            unit: 'C',
             battery: state.data?.state?.battery,
             lastUpdated: state.data?.state?.reportAt
           };
@@ -162,11 +161,4 @@ async function getDeviceState(deviceId, deviceToken, accessToken, env) {
   }
 
   return await response.json();
-}
-
-// Convert to freedom units.
-// Sorry, I love metric for everything, but celsius is a ludicrous scale for ambient temperature.
-function celsiusToFahrenehit(temp) {
-  // Convert to celius, also round to 1 decimal point.
-  return Math.round(((temp * 1.8) + 32) * 10) / 10;
 }
