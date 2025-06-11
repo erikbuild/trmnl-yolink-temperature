@@ -38,6 +38,6 @@ Either the `trmnl_preview` gem or Docker must be installed.
 Simply clone the repo, then run `bin/dev`.
 
 ## References
-http://doc.yosmart.com/docs/yolinkapi/THSensor
-http://doc.yosmart.com/docs/protocol/datapacket#BUDP
-http://doc.yosmart.com/docs/account/Manage#5manageretrieveyolinkdevice
+- http://doc.yosmart.com/docs/yolinkapi/THSensor
+- http://doc.yosmart.com/docs/protocol/datapacket#BUDP
+- http://doc.yosmart.com/docs/account/Manage#5manageretrieveyolinkdevice

@@ -8,4 +8,4 @@ polling_url: https://home-yolink.erik-dc9.workers.dev/
 polling_headers: ''
 id: 93606
 name: YoLink Temperature
-refresh_interval: 1440
+refresh_interval: 60
